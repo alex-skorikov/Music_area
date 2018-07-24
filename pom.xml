@@ -229,7 +229,7 @@
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>3.6.2</version>
-                <configuration>
+<!--                <configuration>
                     <changeLogFile>src/main/resources/liquibase/db.changelog-master.xml</changeLogFile>
                     <driver>org.postgresql.Driver</driver>
                     <url>jdbc:postgresql://ec2-50-19-105-188.compute-1.amazonaws.com:5432/d25jovquf7stbg?createDatabaseIfNotExist=true</url>
@@ -243,7 +243,7 @@
                             <goal>update</goal>
                         </goals>
                     </execution>
-                </executions>
+                </executions>-->
             </plugin>
         </plugins>
     </build>
