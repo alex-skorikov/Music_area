@@ -13,7 +13,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.ArrayList;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
@@ -51,7 +51,7 @@ public class SityJsonControllerTest {
         RequestDispatcher dispatcher = mock(RequestDispatcher.class);
         when(response.getOutputStream()).thenReturn(outputStream);
         when(request.getParameter(any(String.class))).thenReturn("");
-        when(addressStore.getSities(any(String.class))).thenReturn(new CopyOnWriteArrayList<>());
+        when(addressStore.getSities(any(String.class))).thenReturn(new ArrayList<>());
 
         controller.doGet(request, response);
 

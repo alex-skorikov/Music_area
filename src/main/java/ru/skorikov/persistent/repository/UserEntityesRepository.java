@@ -17,9 +17,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Users repository.
@@ -74,7 +74,7 @@ public class UserEntityesRepository implements EntityRepository<User> {
      * Set basicdatasourse.
      * @param utility utility.
      */
-    public static void setUtility(BasicDataSource utility) {
+    public void setUtility(BasicDataSource utility) {
         UserEntityesRepository.utility = utility;
     }
 
@@ -128,15 +128,15 @@ public class UserEntityesRepository implements EntityRepository<User> {
             + "WHERE users.id = user_musictype.user_id AND user_musictype.music_type_id = musictype.id and musictype.id = ?;";
 
     @Override
-    public ConcurrentHashMap<String, CopyOnWriteArrayList<Entity>> getAllEntity(User user) {
+    public ConcurrentHashMap<String, ArrayList<Entity>> getAllEntity(User user) {
 
-        CopyOnWriteArrayList<Entity> musiclist = new CopyOnWriteArrayList<>();
-        ConcurrentHashMap<String, CopyOnWriteArrayList<Entity>> map = new ConcurrentHashMap<>();
+        ArrayList<Entity> musiclist = new ArrayList<>();
+        ConcurrentHashMap<String, ArrayList<Entity>> map = new ConcurrentHashMap<>();
 
-        CopyOnWriteArrayList<Entity> addressList = new CopyOnWriteArrayList<>();
+        ArrayList<Entity> addressList = new ArrayList<>();
         addressList.add(addressStore.findById(user.getAddress().getId()));
 
-        CopyOnWriteArrayList<Entity> roleList = new CopyOnWriteArrayList<>();
+        ArrayList<Entity> roleList = new ArrayList<>();
         roleList.add(rolesStore.findById(user.getRole().getId()));
 
         map.put("Address", addressList);
@@ -190,8 +190,8 @@ public class UserEntityesRepository implements EntityRepository<User> {
      * @param address user address.
      * @return users list.
      */
-    public CopyOnWriteArrayList<User> findUserByAddress(Address address) {
-        CopyOnWriteArrayList<User> list = new CopyOnWriteArrayList<>();
+    public ArrayList<User> findUserByAddress(Address address) {
+        ArrayList<User> list = new ArrayList<>();
         try (Connection connection = utility.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_USERS_BY_ADDRESS)) {
             preparedStatement.setInt(1, address.getId());
@@ -211,8 +211,8 @@ public class UserEntityesRepository implements EntityRepository<User> {
      * @param role user role.
      * @return users list.
      */
-    public CopyOnWriteArrayList<User> findUsersByRole(Role role) {
-        CopyOnWriteArrayList<User> list = new CopyOnWriteArrayList<>();
+    public ArrayList<User> findUsersByRole(Role role) {
+        ArrayList<User> list = new ArrayList<>();
         try (Connection connection = utility.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_USERS_BY_ROLE)) {
             preparedStatement.setInt(1, role.getId());
@@ -232,8 +232,8 @@ public class UserEntityesRepository implements EntityRepository<User> {
      * @param musicType music type.
      * @return users list.
      */
-    public CopyOnWriteArrayList<User> findUsersByMusicType(MusicType musicType) {
-        CopyOnWriteArrayList<User> list = new CopyOnWriteArrayList<>();
+    public ArrayList<User> findUsersByMusicType(MusicType musicType) {
+        ArrayList<User> list = new ArrayList<>();
         try (Connection connection = utility.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_USERS_BY_MUSICTYPE)) {
             preparedStatement.setInt(1, musicType.getId());

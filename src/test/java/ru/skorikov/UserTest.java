@@ -3,8 +3,8 @@ package ru.skorikov;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 import static org.hamcrest.core.Is.is;
 
@@ -56,7 +56,7 @@ public class UserTest {
         user1.setAddress(address);
         Assert.assertThat(user1.getAddress(), is(address));
 
-        CopyOnWriteArrayList<MusicType> list = new CopyOnWriteArrayList<>();
+        ArrayList<MusicType> list = new ArrayList<>();
         user1.setMusicType(list);
         Assert.assertThat(user1.getMusicType(), is(list));
 

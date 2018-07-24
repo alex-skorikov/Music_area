@@ -14,7 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.ArrayList;
 
 import static org.hamcrest.core.Is.is;
 import static org.mockito.Matchers.any;
@@ -125,7 +125,7 @@ public class UserMusicStoreTest {
     public void findAll() throws SQLException {
         when(resultSet.next()).thenReturn(true, true, false);
         when(resultSet.getInt(any(String.class))).thenReturn(1);
-        CopyOnWriteArrayList<UserMusic> list = musicStore.findAll();
+        ArrayList<UserMusic> list = musicStore.findAll();
 
         Assert.assertTrue(list.size() == 2);
 

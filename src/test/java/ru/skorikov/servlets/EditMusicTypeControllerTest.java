@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.ArrayList;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
@@ -51,7 +51,7 @@ public class EditMusicTypeControllerTest {
         HttpServletResponse response = mock(HttpServletResponse.class);
         RequestDispatcher dispatcher = mock(RequestDispatcher.class);
         when(request.getRequestDispatcher(any(String.class))).thenReturn(dispatcher);
-        when(musicTypeStore.findAll()).thenReturn(new CopyOnWriteArrayList<>());
+        when(musicTypeStore.findAll()).thenReturn(new ArrayList<>());
 
         controller.doGet(request, response);
 
@@ -73,7 +73,7 @@ public class EditMusicTypeControllerTest {
         when(request.getRequestDispatcher(any(String.class))).thenReturn(dispatcher);
         when(request.getParameter("id")).thenReturn(String.valueOf(1));
         when(musicTypeStore.delete(1)).thenReturn(true);
-        when(musicTypeStore.findAll()).thenReturn(new CopyOnWriteArrayList<>());
+        when(musicTypeStore.findAll()).thenReturn(new ArrayList<>());
 
         controller.doPost(request, response);
 

@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.ArrayList;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
@@ -77,7 +77,7 @@ public class CreateMusicTypeTest {
         when(request.getParameter("description")).thenReturn("description");
         when(store.add(any(MusicType.class))).thenReturn(true);
         when(request.getParameter("user")).thenReturn("user");
-        when(store.findAll()).thenReturn(new CopyOnWriteArrayList<>());
+        when(store.findAll()).thenReturn(new ArrayList<>());
         when(request.getRequestDispatcher(any(String.class))).thenReturn(dispatcher);
 
         createMusicType.doPost(request, response);

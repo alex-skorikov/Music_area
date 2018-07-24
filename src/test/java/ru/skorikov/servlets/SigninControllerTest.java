@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.ArrayList;
 
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.any;
@@ -117,7 +117,7 @@ public class SigninControllerTest {
         when(request.getParameter("login")).thenReturn(user.getLogin());
         when(request.getParameter("password")).thenReturn(user.getPassword());
         when(service.isCreditional(any(String.class), any(String.class))).thenReturn(user);
-        when(service.findAll()).thenReturn(new CopyOnWriteArrayList<>());
+        when(service.findAll()).thenReturn(new ArrayList<>());
 
         controller.doPost(request, response);
         verify(request.getRequestDispatcher("/WEB-INF/views/AdminMenu.jsp"),
@@ -150,7 +150,7 @@ public class SigninControllerTest {
         when(request.getParameter("login")).thenReturn(user.getLogin());
         when(request.getParameter("password")).thenReturn(user.getPassword());
         when(service.isCreditional(any(String.class), any(String.class))).thenReturn(user);
-        when(service.findAll()).thenReturn(new CopyOnWriteArrayList<>());
+        when(service.findAll()).thenReturn(new ArrayList<>());
 
         controller.doPost(request, response);
         verify(request.getRequestDispatcher("/WEB-INF/views/ModeratorMenu.jsp"),

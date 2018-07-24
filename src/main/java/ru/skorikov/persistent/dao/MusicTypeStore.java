@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.ArrayList;
 
 /**
  * Music Store.
@@ -147,8 +147,8 @@ public class MusicTypeStore implements EntityDAO<MusicType> {
     }
 
     @Override
-    public CopyOnWriteArrayList<MusicType> findAll() {
-        CopyOnWriteArrayList<MusicType> list = new CopyOnWriteArrayList<>();
+    public ArrayList<MusicType> findAll() {
+        ArrayList<MusicType> list = new ArrayList<>();
         try (Connection connection = utility.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(GET_ALL_MUSIC_TYPES_SQL)) {

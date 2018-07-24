@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.ArrayList;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
@@ -48,7 +48,7 @@ public class UsersControllerTest {
         HttpServletRequest request = mock(HttpServletRequest.class);
         HttpServletResponse response = mock(HttpServletResponse.class);
         RequestDispatcher dispatcher = mock(RequestDispatcher.class);
-        when(service.findAll()).thenReturn(new CopyOnWriteArrayList<>());
+        when(service.findAll()).thenReturn(new ArrayList<>());
         when(request.getRequestDispatcher("/WEB-INF/views/AdminMenu.jsp")).thenReturn(dispatcher);
 
         controller.doGet(request, response);

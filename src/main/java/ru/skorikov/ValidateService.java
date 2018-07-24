@@ -1,6 +1,6 @@
 package ru.skorikov;
 
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.ArrayList;
 
 /**
  * Logic interface.
@@ -35,7 +35,7 @@ public interface ValidateService<T> {
      *
      * @return Entityes list.
      */
-    CopyOnWriteArrayList<T> findAll();
+    ArrayList<T> findAll();
 
     /**
      * Find Entity by ID.

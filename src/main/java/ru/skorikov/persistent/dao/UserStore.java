@@ -12,8 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * User Store.
@@ -169,8 +169,8 @@ public class UserStore implements EntityDAO<User> {
     }
 
     @Override
-    public CopyOnWriteArrayList<User> findAll() {
-        CopyOnWriteArrayList<User> list = new CopyOnWriteArrayList<>();
+    public ArrayList<User> findAll() {
+        ArrayList<User> list = new ArrayList<>();
         try (Connection connection = utility.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(FIND_ALL_USER_SQL)) {

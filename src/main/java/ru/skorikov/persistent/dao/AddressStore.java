@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.ArrayList;
 
 /**
  * Address Store.
@@ -158,8 +158,8 @@ public class AddressStore implements EntityDAO<Address> {
     }
 
     @Override
-    public CopyOnWriteArrayList<Address> findAll() {
-        CopyOnWriteArrayList<Address> list = new CopyOnWriteArrayList<>();
+    public ArrayList<Address> findAll() {
+        ArrayList<Address> list = new ArrayList<>();
         try (Connection connection = utility.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(GET_ALL_ADDRESS_SQL)) {
@@ -182,8 +182,8 @@ public class AddressStore implements EntityDAO<Address> {
      *
      * @return countries list.
      */
-    public CopyOnWriteArrayList<String> getCountries() {
-        CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+    public ArrayList<String> getCountries() {
+        ArrayList<String> list = new ArrayList<>();
         try (Connection connection = utility.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(GET_ALL_COUNTRIES)) {
@@ -201,8 +201,8 @@ public class AddressStore implements EntityDAO<Address> {
      * @param country country.
      * @return sities list.
      */
-    public CopyOnWriteArrayList<String> getSities(String country) {
-        CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+    public ArrayList<String> getSities(String country) {
+        ArrayList<String> list = new ArrayList<>();
         try (Connection connection = utility.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_SITIES)) {
             preparedStatement.setString(1, country);
@@ -222,8 +222,8 @@ public class AddressStore implements EntityDAO<Address> {
      * @param sity sity.
      * @return streets list.
      */
-    public CopyOnWriteArrayList<String> getStreets(String sity) {
-        CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+    public ArrayList<String> getStreets(String sity) {
+        ArrayList<String> list = new ArrayList<>();
         try (Connection connection = utility.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_STREETS)) {
             preparedStatement.setString(1, sity);

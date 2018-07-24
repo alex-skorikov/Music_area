@@ -6,8 +6,8 @@ import ru.skorikov.persistent.dao.AddressStore;
 import ru.skorikov.persistent.dao.UserMusicStore;
 import ru.skorikov.persistent.repository.UserEntityesRepository;
 
+import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * User service impl Validate.
@@ -67,7 +67,7 @@ public class UserService implements ValidateService<User> {
      */
     public User isCreditional(String login, String password) {
         User user = null;
-        CopyOnWriteArrayList<User> users = userStore.findAll();
+        ArrayList<User> users = userStore.findAll();
         for (User us : users) {
             if (us.getLogin().equals(login) && us.getPassword().equals(password)) {
                 user = us;
@@ -75,10 +75,10 @@ public class UserService implements ValidateService<User> {
             }
         }
         if (user != null) {
-            ConcurrentHashMap<String, CopyOnWriteArrayList<Entity>> map = userEntityesRepository.getAllEntity(user);
+            ConcurrentHashMap<String, ArrayList<Entity>> map = userEntityesRepository.getAllEntity(user);
             user.setAddress((Address) map.get("Address").get(0));
             user.setRole((Role) map.get("Role").get(0));
-            CopyOnWriteArrayList<MusicType> userMusic = new CopyOnWriteArrayList<>();
+            ArrayList<MusicType> userMusic = new ArrayList<>();
             for (Entity musicType : map.get("Music_types")) {
                 userMusic.add((MusicType) musicType);
             }
@@ -109,14 +109,14 @@ public class UserService implements ValidateService<User> {
     }
 
     @Override
-    public CopyOnWriteArrayList<User> findAll() {
-        CopyOnWriteArrayList<User> usersList;
+    public ArrayList<User> findAll() {
+        ArrayList<User> usersList;
         usersList = userStore.findAll();
         for (User user : usersList) {
-            ConcurrentHashMap<String, CopyOnWriteArrayList<Entity>> map = userEntityesRepository.getAllEntity(user);
+            ConcurrentHashMap<String, ArrayList<Entity>> map = userEntityesRepository.getAllEntity(user);
             user.setAddress((Address) map.get("Address").get(0));
             user.setRole((Role) map.get("Role").get(0));
-            CopyOnWriteArrayList<MusicType> userMusic = new CopyOnWriteArrayList<>();
+            ArrayList<MusicType> userMusic = new ArrayList<>();
             for (Entity musicType : map.get("Music_types")) {
                 userMusic.add((MusicType) musicType);
             }
@@ -128,10 +128,10 @@ public class UserService implements ValidateService<User> {
     @Override
     public User findById(Integer id) {
         User user = userStore.findById(id);
-        ConcurrentHashMap<String, CopyOnWriteArrayList<Entity>> map = userEntityesRepository.getAllEntity(user);
+        ConcurrentHashMap<String, ArrayList<Entity>> map = userEntityesRepository.getAllEntity(user);
         user.setAddress((Address) map.get("Address").get(0));
         user.setRole((Role) map.get("Role").get(0));
-        CopyOnWriteArrayList<MusicType> userMusic = new CopyOnWriteArrayList<>();
+        ArrayList<MusicType> userMusic = new ArrayList<>();
         for (Entity musicType : map.get("Music_types")) {
             userMusic.add((MusicType) musicType);
         }
@@ -143,7 +143,7 @@ public class UserService implements ValidateService<User> {
     @Override
     public User findByName(String name) {
         User user = null;
-        CopyOnWriteArrayList<User> users = userStore.findAll();
+        ArrayList<User> users = userStore.findAll();
         for (User us : users) {
             if (us.getName().equals(name)) {
                 user = us;
@@ -157,7 +157,7 @@ public class UserService implements ValidateService<User> {
      * Set UserStore.
      * @param userStore user store.
      */
-    public static void setUserStore(UserStore userStore) {
+    public void setUserStore(UserStore userStore) {
         UserService.userStore = userStore;
     }
 
@@ -165,7 +165,7 @@ public class UserService implements ValidateService<User> {
      * set user repository.
      * @param userEntityesRepository repository.
      */
-    public static void setUserEntityesRepository(UserEntityesRepository userEntityesRepository) {
+    public void setUserEntityesRepository(UserEntityesRepository userEntityesRepository) {
         UserService.userEntityesRepository = userEntityesRepository;
     }
 
@@ -173,7 +173,7 @@ public class UserService implements ValidateService<User> {
      * set Role store.
      * @param rolesStore rolestore.
      */
-    public static void setRolesStore(RolesStore rolesStore) {
+    public void setRolesStore(RolesStore rolesStore) {
         UserService.rolesStore = rolesStore;
     }
 
@@ -181,7 +181,7 @@ public class UserService implements ValidateService<User> {
      * set Address store.
      * @param addressStore address store.
      */
-    public static void setAddressStore(AddressStore addressStore) {
+    public void setAddressStore(AddressStore addressStore) {
         UserService.addressStore = addressStore;
     }
 
@@ -189,7 +189,7 @@ public class UserService implements ValidateService<User> {
      * set Music store.
      * @param userMusicStore music store.
      */
-    public static void setUserMusicStore(UserMusicStore userMusicStore) {
+    public void setUserMusicStore(UserMusicStore userMusicStore) {
         UserService.userMusicStore = userMusicStore;
     }
 }

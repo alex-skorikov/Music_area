@@ -17,9 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
@@ -67,8 +67,8 @@ public class UserCreateControllerTest {
         HttpServletResponse response = mock(HttpServletResponse.class);
         RequestDispatcher dispatcher = mock(RequestDispatcher.class);
 
-        when(rolesStore.findAll()).thenReturn(new CopyOnWriteArrayList<>());
-        when(addressStore.getCountries()).thenReturn(new CopyOnWriteArrayList<>());
+        when(rolesStore.findAll()).thenReturn(new ArrayList<>());
+        when(addressStore.getCountries()).thenReturn(new ArrayList<>());
         when(request.getRequestDispatcher(any(String.class))).thenReturn(dispatcher);
 
         controller.doGet(request, response);

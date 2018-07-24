@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 import ru.skorikov.persistent.dao.AddressStore;
@@ -12,8 +14,9 @@ import ru.skorikov.persistent.dao.RolesStore;
 import ru.skorikov.persistent.dao.UserMusicStore;
 import ru.skorikov.persistent.dao.UserStore;
 import ru.skorikov.persistent.repository.UserEntityesRepository;
+
+import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertTrue;
@@ -29,30 +32,38 @@ public class UserServiceTest {
     /**
      * user store for test.
      */
+    @Mock
     private UserStore userStore = Mockito.mock(UserStore.class);
     /**
      * rolestore for test.
      */
+    @Mock
     private RolesStore rolesStore = Mockito.mock(RolesStore.class);
     /**
      * address store for test.
      */
+    @Mock
     private AddressStore addressStore = Mockito.mock(AddressStore.class);
     /**
      * music store for test.
      */
+    @Mock
     private UserMusicStore userMusicStore = Mockito.mock(UserMusicStore.class);
     /**
      * repository for test.
      */
+    @Mock
     private UserEntityesRepository repository = Mockito.mock(UserEntityesRepository.class);
-
+    /**
+     * Test instance.
+     */
+    @InjectMocks
+    private UserService userService = UserService.getInstance();
     /**
      * Init storege and services.
      */
     @Before
     public void init() {
-        UserService userService = Mockito.mock(UserService.class);
         userService.setUserStore(userStore);
         userService.setAddressStore(addressStore);
         userService.setRolesStore(rolesStore);
@@ -109,20 +120,20 @@ public class UserServiceTest {
         User user2 = new User();
         user.setId(1);
         user2.setId(2);
-        CopyOnWriteArrayList<User> list = new CopyOnWriteArrayList<>();
+        ArrayList<User> list = new ArrayList<>();
         list.add(user);
         list.add(user2);
         when(userStore.findAll()).thenReturn(list);
 
-        ConcurrentHashMap<String, CopyOnWriteArrayList<Entity>> map = new ConcurrentHashMap<>();
+        ConcurrentHashMap<String, ArrayList<Entity>> map = new ConcurrentHashMap<>();
         Address address = new Address();
         Role role = new Role();
         MusicType musicType = new MusicType();
-        CopyOnWriteArrayList addressList = new CopyOnWriteArrayList();
+        ArrayList addressList = new ArrayList();
         addressList.add(address);
-        CopyOnWriteArrayList roleList = new CopyOnWriteArrayList();
+        ArrayList roleList = new ArrayList();
         roleList.add(role);
-        CopyOnWriteArrayList musicList = new CopyOnWriteArrayList();
+        ArrayList musicList = new ArrayList();
         musicList.add(musicType);
         map.put("Address", addressList);
         map.put("Role", roleList);
@@ -139,15 +150,15 @@ public class UserServiceTest {
     public void findById() {
         User user = new User();
         user.setId(1);
-        ConcurrentHashMap<String, CopyOnWriteArrayList<Entity>> map = new ConcurrentHashMap<>();
+        ConcurrentHashMap<String, ArrayList<Entity>> map = new ConcurrentHashMap<>();
         Address address = new Address();
         Role role = new Role();
         MusicType musicType = new MusicType();
-        CopyOnWriteArrayList addressList = new CopyOnWriteArrayList();
+        ArrayList addressList = new ArrayList();
         addressList.add(address);
-        CopyOnWriteArrayList roleList = new CopyOnWriteArrayList();
+        ArrayList roleList = new ArrayList();
         roleList.add(role);
-        CopyOnWriteArrayList musicList = new CopyOnWriteArrayList();
+        ArrayList musicList = new ArrayList();
         musicList.add(musicType);
         map.put("Address", addressList);
         map.put("Role", roleList);
@@ -165,14 +176,12 @@ public class UserServiceTest {
     public void findByName() {
         User user = new User();
         user.setName("name");
-        CopyOnWriteArrayList<User> list = new CopyOnWriteArrayList<>();
+        ArrayList<User> list = new ArrayList<>();
         list.add(user);
+
         when(userStore.findAll()).thenReturn(list);
 
-        Assert.assertThat(UserService.getInstance().findByName("name"), is(user));
-
-        when(userStore.findAll()).thenReturn(new CopyOnWriteArrayList<>());
-        Assert.assertNull(UserService.getInstance().findByName("name"));
+        Assert.assertThat(userService.findByName("name"), is(user));
 
     }
     /**
@@ -189,22 +198,22 @@ public class UserServiceTest {
         User user2 = new User();
         user2.setLogin("login");
         user2.setPassword("pass");
-        CopyOnWriteArrayList<User> list = new CopyOnWriteArrayList<>();
+        ArrayList<User> list = new ArrayList<>();
         list.add(user);
         list.add(user1);
         list.add(user2);
 
         when(userStore.findAll()).thenReturn(list);
 
-        ConcurrentHashMap<String, CopyOnWriteArrayList<Entity>> map = new ConcurrentHashMap<>();
+        ConcurrentHashMap<String, ArrayList<Entity>> map = new ConcurrentHashMap<>();
         Address address = new Address();
         Role role = new Role();
         MusicType musicType = new MusicType();
-        CopyOnWriteArrayList addressList = new CopyOnWriteArrayList();
+        ArrayList addressList = new ArrayList();
         assertTrue(addressList.add(address));
-        CopyOnWriteArrayList roleList = new CopyOnWriteArrayList();
+        ArrayList roleList = new ArrayList();
         assertTrue(roleList.add(role));
-        CopyOnWriteArrayList musicList = new CopyOnWriteArrayList();
+        ArrayList musicList = new ArrayList();
         assertTrue(musicList.add(musicType));
         map.put("Address", addressList);
         map.put("Role", roleList);
@@ -213,7 +222,7 @@ public class UserServiceTest {
 
         Assert.assertThat(UserService.getInstance().isCreditional("login", "pass"), is(user2));
 
-        when(userStore.findAll()).thenReturn(new CopyOnWriteArrayList<>());
+        when(userStore.findAll()).thenReturn(new ArrayList<>());
         Assert.assertNull(UserService.getInstance().isCreditional("", ""));
     }
 

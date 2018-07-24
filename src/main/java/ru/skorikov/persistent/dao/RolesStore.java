@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.ArrayList;
 
 /**
  * Roles store.
@@ -146,8 +146,8 @@ public class RolesStore implements EntityDAO<Role> {
      * @return roles list.
      */
     @Override
-    public CopyOnWriteArrayList<Role> findAll() {
-        CopyOnWriteArrayList<Role> list = new CopyOnWriteArrayList<>();
+    public ArrayList<Role> findAll() {
+        ArrayList<Role> list = new ArrayList<>();
         try (Connection connection = utility.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(GET_ALL_ROLES_SQL)) {

@@ -10,8 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Role ropository.
@@ -50,7 +50,7 @@ public class RoleUsersRepository implements EntityRepository<Role> {
      * Set basic datasourse utility.
      * @param utility utility.
      */
-    public static void setUtility(BasicDataSource utility) {
+    public void setUtility(BasicDataSource utility) {
         RoleUsersRepository.utility = utility;
     }
 
@@ -61,10 +61,10 @@ public class RoleUsersRepository implements EntityRepository<Role> {
             + "from users where user_role = ?";
 
     @Override
-    public ConcurrentHashMap<String, CopyOnWriteArrayList<Entity>> getAllEntity(Role role) {
+    public ConcurrentHashMap<String, ArrayList<Entity>> getAllEntity(Role role) {
 
-        CopyOnWriteArrayList<Entity> linkedList = new CopyOnWriteArrayList<>();
-        ConcurrentHashMap<String, CopyOnWriteArrayList<Entity>>  map = new ConcurrentHashMap<>();
+        ArrayList<Entity> linkedList = new ArrayList<>();
+        ConcurrentHashMap<String, ArrayList<Entity>>  map = new ConcurrentHashMap<>();
         try (Connection connection = utility.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_USERS_BY_ROLE)) {
             preparedStatement.setInt(1, role.getId());

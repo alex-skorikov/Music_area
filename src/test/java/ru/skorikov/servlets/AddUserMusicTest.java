@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.ArrayList;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
@@ -73,7 +73,7 @@ public class AddUserMusicTest {
     @Test
     public void doGet() throws ServletException, IOException {
         when(req.getParameter("id")).thenReturn(String.valueOf(1));
-        when(musicTypeStore.findAll()).thenReturn(new CopyOnWriteArrayList<>());
+        when(musicTypeStore.findAll()).thenReturn(new ArrayList<>());
         when(req.getRequestDispatcher(any(String.class))).thenReturn(dispatcher);
         when(service.findById(any(Integer.class))).thenReturn(new User());
         addUserMusic.doGet(req, resp);

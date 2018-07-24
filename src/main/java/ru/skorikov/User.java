@@ -1,8 +1,8 @@
 package ru.skorikov;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Class User.
@@ -43,7 +43,7 @@ public class User extends Entity {
     /**
      * User music types.
      */
-    private CopyOnWriteArrayList<MusicType> musicType = new CopyOnWriteArrayList<>();
+    private ArrayList<MusicType> musicType = new ArrayList<>();
 
     /**
      * Create new User.
@@ -186,7 +186,7 @@ public class User extends Entity {
      * get user music type.
      * @return types list.
      */
-    public CopyOnWriteArrayList<MusicType> getMusicType() {
+    public ArrayList<MusicType> getMusicType() {
         return musicType;
     }
 
@@ -194,7 +194,7 @@ public class User extends Entity {
      * Set music type list to User.
      * @param musicType music type list.
      */
-    public void setMusicType(CopyOnWriteArrayList<MusicType> musicType) {
+    public void setMusicType(ArrayList<MusicType> musicType) {
         this.musicType = musicType;
     }
 

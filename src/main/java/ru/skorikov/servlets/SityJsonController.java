@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.ArrayList;
 
 
 /**
@@ -24,7 +24,7 @@ public class SityJsonController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("text/json");
         PrintWriter writer = new PrintWriter(resp.getOutputStream());
-        CopyOnWriteArrayList<String> sities = addressStore.getSities(req.getParameter("country"));
+        ArrayList<String> sities = addressStore.getSities(req.getParameter("country"));
         JsonObject object = new JsonObject();
         for (int i = 0; i < sities.size(); i++) {
             object.addProperty(String.valueOf(i), sities.get(i));

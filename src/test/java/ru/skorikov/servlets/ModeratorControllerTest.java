@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.ArrayList;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
@@ -49,7 +49,7 @@ public class ModeratorControllerTest {
         HttpServletResponse response = mock(HttpServletResponse.class);
         RequestDispatcher dispatcher = mock(RequestDispatcher.class);
         when(request.getRequestDispatcher(any(String.class))).thenReturn(dispatcher);
-        when(service.findAll()).thenReturn(new CopyOnWriteArrayList<>());
+        when(service.findAll()).thenReturn(new ArrayList<>());
 
         controller.doGet(request, response);
 

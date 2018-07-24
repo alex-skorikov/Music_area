@@ -22,8 +22,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 import static org.hamcrest.core.Is.is;
 import static org.mockito.Matchers.any;
@@ -95,7 +95,7 @@ public class UserEntityesRepositoryTest {
         Role role = new Role();
         MusicType musicType = new MusicType();
         musicType.setType("music");
-        CopyOnWriteArrayList<MusicType> list = new CopyOnWriteArrayList<>();
+        ArrayList<MusicType> list = new ArrayList<>();
         list.add(musicType);
         user.setId(1);
         role.setId(1);
@@ -112,12 +112,12 @@ public class UserEntityesRepositoryTest {
         when(resultSet.next()).thenReturn(true, false);
         when(resultSet.getString("music_type")).thenReturn("music");
 
-        ConcurrentHashMap<String, CopyOnWriteArrayList<Entity>> map
+        ConcurrentHashMap<String, ArrayList<Entity>> map
                 = repository.getAllEntity(user);
 
-        CopyOnWriteArrayList<Entity> addresslist = map.get("Address");
-        CopyOnWriteArrayList<Entity> rolelist = map.get("Role");
-        CopyOnWriteArrayList<Entity> musiclist = map.get("Music_types");
+        ArrayList<Entity> addresslist = map.get("Address");
+        ArrayList<Entity> rolelist = map.get("Role");
+        ArrayList<Entity> musiclist = map.get("Music_types");
 
         Role testRole = (Role) rolelist.get(0);
         Address testaddress = (Address) addresslist.get(0);
@@ -136,7 +136,7 @@ public class UserEntityesRepositoryTest {
     public void addNewUserAndHisEntityes() {
         User user = new User();
         MusicType musicType = new MusicType();
-        CopyOnWriteArrayList<MusicType> list = new CopyOnWriteArrayList<>();
+        ArrayList<MusicType> list = new ArrayList<>();
         musicType.setType("music");
         list.add(musicType);
         user.setMusicType(list);

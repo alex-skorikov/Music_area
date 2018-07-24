@@ -1,6 +1,6 @@
 package ru.skorikov.persistent.dao;
 
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.ArrayList;
 
 /**
  * Interface DAO.
@@ -45,5 +45,5 @@ public interface EntityDAO<T> {
      *
      * @return elements list.
      */
-    CopyOnWriteArrayList<T> findAll();
+    ArrayList<T> findAll();
 }

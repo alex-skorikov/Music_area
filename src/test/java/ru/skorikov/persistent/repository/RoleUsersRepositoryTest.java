@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 import ru.skorikov.Entity;
@@ -15,8 +17,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 import static org.hamcrest.core.Is.is;
 import static org.mockito.Matchers.any;
@@ -30,23 +32,28 @@ public class RoleUsersRepositoryTest {
     /**
      * datasourse for tesst.
      */
+    @Mock
     private BasicDataSource dataSource = Mockito.mock(BasicDataSource.class);
-    /**
-     * Repository for test.
-     */
-    private RoleUsersRepository repository = Mockito.mock(RoleUsersRepository.class);
     /**
      * Connection for test.
      */
+    @Mock
     private Connection connection = Mockito.mock(Connection.class);
     /**
      * Statment for test.
      */
+    @Mock
     private PreparedStatement statement = Mockito.mock(PreparedStatement.class);
     /**
      * Resultset for test.
      */
+    @Mock
     private ResultSet resultSet = Mockito.mock(ResultSet.class);
+    /**
+     * Repository for test.
+     */
+    @InjectMocks
+    private RoleUsersRepository repository = RoleUsersRepository.getInstanse();
 
     /**
      * Init sourse for test.
@@ -78,9 +85,9 @@ public class RoleUsersRepositoryTest {
         when(resultSet.getString("user_name")).thenReturn(user.getName());
         when(resultSet.getString("user_login")).thenReturn(user.getLogin());
 
-        ConcurrentHashMap<String, CopyOnWriteArrayList<Entity>> map
+        ConcurrentHashMap<String, ArrayList<Entity>> map
                 = RoleUsersRepository.getInstanse().getAllEntity(role);
-        CopyOnWriteArrayList<Entity> list = map.get("Users");
+        ArrayList<Entity> list = map.get("Users");
         User test = (User) list.get(0);
 
         Assert.assertThat(test.getName(), is(user.getName()));

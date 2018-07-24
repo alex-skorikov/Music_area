@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.ArrayList;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
@@ -60,7 +60,7 @@ public class UserUpdateUserControllerTest {
         when(request.getRequestDispatcher(any(String.class))).thenReturn(dispatcher);
         when(request.getParameter("id")).thenReturn(String.valueOf(1));
         when(service.findById(1)).thenReturn(new User());
-        when(addressStore.getCountries()).thenReturn(new CopyOnWriteArrayList<>());
+        when(addressStore.getCountries()).thenReturn(new ArrayList<>());
 
         controller.doGet(request, response);
 
