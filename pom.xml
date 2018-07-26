@@ -229,21 +229,10 @@
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>3.6.2</version>
-<!--                <configuration>
-                    <changeLogFile>src/main/resources/liquibase/db.changelog-master.xml</changeLogFile>
-                    <driver>org.postgresql.Driver</driver>
-                    <url>jdbc:postgresql://ec2-50-19-105-188.compute-1.amazonaws.com:5432/d25jovquf7stbg?createDatabaseIfNotExist=true</url>
-                    <username>htsnlbgbuleiyn</username>
-                    <password>a7517a9d30780f3cc9b0381bd16e15bb8f35f81fb9d2efff9655dacf3e9bacac</password>
+                <configuration>
+                    <propertyFile>liquibase/liquibase.properties</propertyFile>
+                    <changeLogFile>liquibase/db-changelog-master.xml</changeLogFile>
                 </configuration>
-                <executions>
-                    <execution>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>update</goal>
-                        </goals>
-                    </execution>
-                </executions>-->
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

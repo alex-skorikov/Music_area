@@ -81,10 +81,10 @@ public class DataBaseUtility {
             BasicDataSource ds = new BasicDataSource();
 
 
-/*            ds.setDriverClassName("org.postgresql.Driver");
+            ds.setDriverClassName("org.postgresql.Driver");
             ds.setUrl("jdbc:postgresql://localhost:5432/Music_area");
             ds.setUsername("postgres");
-            ds.setPassword("postgres");*/
+            ds.setPassword("postgres");
 
             ds.setMinIdle(4);
             ds.setMaxIdle(16);
