@@ -231,7 +231,7 @@
                 <version>3.6.2</version>
                 <configuration>
                     <propertyFile>liquibase/liquibase.properties</propertyFile>
-                    <changeLogFile>liquibase/db-changelog-master.xml</changeLogFile>
+                    <changeLogFile>liquibase/db.changelog-master.xml</changeLogFile>
                 </configuration>
             </plugin>
             <plugin>
