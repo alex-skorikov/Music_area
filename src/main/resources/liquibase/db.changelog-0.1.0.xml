@@ -6,20 +6,14 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-<!--    <changeSet id="1" author="alex">
+    <changeSet id="1" author="alex">
         <comment>
-            Создание таблицы изображений
+            Create table roles.
         </comment>
         <sql>
-            CREATE TABLE images
-            (
-            id bigint NOT NULL,
-            alt character varying(255),
-            url_big character varying(255),
-            url_small character varying(255),
-            CONSTRAINT images_pkey PRIMARY KEY (id)
-            )
+            CREATE TABLE IF NOT EXISTS Roles
+            (id SERIAL PRIMARY KEY, role VARCHAR(32))
         </sql>
-    </changeSet>-->
+    </changeSet>
 
 </databaseChangeLog>
