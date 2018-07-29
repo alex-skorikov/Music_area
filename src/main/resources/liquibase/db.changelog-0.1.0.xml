@@ -12,7 +12,68 @@
         </comment>
         <sql>
             CREATE TABLE IF NOT EXISTS Roles
-            (id SERIAL PRIMARY KEY, role VARCHAR(32))
+            (id SERIAL PRIMARY KEY, role VARCHAR(32));
+        </sql>
+    </changeSet>
+    <changeSet id="2" author="alex">
+        <comment>Create table address</comment>
+        <sql>
+            CREATE TABLE IF NOT EXISTS Address
+            (id SERIAL PRIMARY KEY, country text, sity text, street text);
+        </sql>
+    </changeSet>
+    <changeSet id="3" author="alex">
+        <comment>Create table music type</comment>
+        <sql>
+            CREATE TABLE IF NOT EXISTS MusicType
+            (id SERIAL PRIMARY KEY, music_type text, description text);
+        </sql>
+    </changeSet>
+    <changeSet id="4" author="alex">
+        <comment>Create table users</comment>
+        <sql>
+            CREATE TABLE IF NOT EXISTS Users
+            (id SERIAL PRIMARY KEY, user_name text, user_login text, user_email text, create_date date,
+            user_password text, user_address integer REFERENCES Address(id), user_role integer REFERENCES Roles(id));
+        </sql>
+    </changeSet>
+    <changeSet id="5" author="alex">
+        <comment>Create table user-musictype</comment>
+        <sql>
+            CREATE TABLE IF NOT EXISTS User_musicType
+            (user_id serial, music_type_id serial, PRIMARY KEY(user_id, music_type_id), FOREIGN KEY (user_id)
+            REFERENCES Users(id), FOREIGN KEY (music_type_id) REFERENCES MusicType(id));
+        </sql>
+    </changeSet>
+    <changeSet id="6" author="alex">
+        <comment>Insert roles</comment>
+        <sql>
+            INSERT INTO Roles(role) values ('USER'), ('ADMIN'),('MODERATOR') ON CONFLICT DO NOTHING;
+        </sql>
+    </changeSet>
+    <changeSet id="7" author="alex">
+        <comment>Insert roles</comment>
+        <sql>
+            INSERT INTO MusicType(music_type, description) values ('Acid Jazz',''), ('Alternative',''), ('Ambient',''), ('Bass',''),
+            ('Blues', ''), ('Breaks', ''),('Breakbeat', ''),('Chillout', ''),('Сlassic', ''), ('Classic Rock', ''),('Club', ''),
+            ('Hip-Hop',''), ('Disco', ''), ('Downtempo', ''), ('Electronic', ''),('Pop', ''),
+            ('Indie',''), ('Industrial',''), ('Jazz', ''), ('Latin',''), ('Psychadelic', ''),
+            ('Rap', ''), ('R&amp;B', ''), ('Reggae', ''), ('Tango', ''), ('Techno', ''), ('Trance', '') ON CONFLICT DO NOTHING;
+        </sql>
+    </changeSet>
+    <changeSet id="8" author="alex">
+        <comment>Insert first address</comment>
+        <sql>
+            INSERT INTO Address (country, sity, street) values
+            ('Russia', 'Moscow', 'Kremlin-1') ON CONFLICT DO NOTHING;
+        </sql>
+    </changeSet>
+    <changeSet id="9" author="alex">
+        <comment>Insert first root user</comment>
+        <sql>
+            INSERT INTO Users
+            (user_name, user_login, user_email, create_date, user_password, user_address, user_role)
+            VALUES ('admin', 'admin', 'admin@admin', CURRENT_DATE, 'admin', 1, 2);
         </sql>
     </changeSet>
 

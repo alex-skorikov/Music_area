@@ -93,7 +93,7 @@ public class DataBaseUtility {
 
             basicDataSource = ds;
 
-            dataBaseInit(ds);
+            //dataBaseInit(ds);
         }
         return basicDataSource;
     }
