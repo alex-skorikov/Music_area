@@ -81,9 +81,9 @@ public class DataBaseUtility {
             BasicDataSource ds = new BasicDataSource();
 
             ds.setDriverClassName("org.postgresql.Driver");
-            ds.setUrl("jdbc:postgresql://ec2-54-217-205-90.eu-west-1.compute.amazonaws.com:5432/ddi2ocre4imcf5?sslmode=require");
-            ds.setUsername("guaumlbhoxgeac");
-            ds.setPassword("b442a1e669831fb2e499fc936bb97973149e54edbde3780ece73e1ad193e5a8a");
+            ds.setUrl("jdbc:postgresql://localhost:5432/Music_area");
+            ds.setUsername("postgres");
+            ds.setPassword("postgres");
 
             ds.setMinIdle(4);
             ds.setMaxIdle(16);
@@ -93,7 +93,7 @@ public class DataBaseUtility {
 
             basicDataSource = ds;
 
-            //dataBaseInit(ds);
+            dataBaseInit(ds);
         }
         return basicDataSource;
     }
