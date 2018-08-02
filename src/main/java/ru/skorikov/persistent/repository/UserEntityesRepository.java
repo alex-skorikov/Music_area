@@ -1,5 +1,4 @@
 package ru.skorikov.persistent.repository;
-
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.log4j.Logger;
 import ru.skorikov.User;

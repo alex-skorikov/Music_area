@@ -1,11 +1,20 @@
 package ru.skorikov;
 
+import liquibase.Contexts;
+import liquibase.LabelExpression;
+import liquibase.Liquibase;
+import liquibase.database.Database;
+import liquibase.database.DatabaseConnection;
+import liquibase.database.DatabaseFactory;
+import liquibase.exception.LiquibaseException;
+import liquibase.resource.ClassLoaderResourceAccessor;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.SQLException;
+import java.util.Properties;
 
 /**
  * Class DataBase Util.
@@ -80,10 +89,13 @@ public class DataBaseUtility {
         if (basicDataSource == null) {
             BasicDataSource ds = new BasicDataSource();
 
-            ds.setDriverClassName("org.postgresql.Driver");
-            ds.setUrl("jdbc:postgresql://localhost:5432/Music_area");
-            ds.setUsername("postgres");
-            ds.setPassword("postgres");
+            Properties properties = new Properties();
+            properties.getProperty("src/main/resources/develop/database.properties");
+
+            ds.setDriverClassName(properties.getProperty("jdbc.drivers"));
+            ds.setUrl(properties.getProperty("jdbc.url"));
+            ds.setUsername(properties.getProperty("jdbc.username"));
+            ds.setPassword(properties.getProperty("jdbc.password"));
 
             ds.setMinIdle(4);
             ds.setMaxIdle(16);
@@ -93,7 +105,12 @@ public class DataBaseUtility {
 
             basicDataSource = ds;
 
-            dataBaseInit(ds);
+            try {
+                dataBaseInit(ds);
+            } catch (LiquibaseException e) {
+                LOGGER.error(e.getMessage(), e);
+            }
+
         }
         return basicDataSource;
     }
@@ -102,12 +119,13 @@ public class DataBaseUtility {
      * Initialise DataBase.
      *
      * @param dataSource connection pool.
+     * @exception LiquibaseException exception
      */
-    private static void dataBaseInit(BasicDataSource dataSource) {
+    private static void dataBaseInit(BasicDataSource dataSource) throws LiquibaseException {
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement()) {
             connection.setAutoCommit(false);
-            statement.execute(CREATE_TABLE_ROLES_SQL);
+/*            statement.execute(CREATE_TABLE_ROLES_SQL);
             statement.execute(CREATE_TABLE_ADDRESS_SQL);
             statement.execute(CREATE_TABLE_MUSIC_TYPE_SQL);
             statement.execute(CREATE_TABLE_USERS_SQL);
@@ -115,7 +133,12 @@ public class DataBaseUtility {
             statement.execute(INSERT_ROLES_SQL);
             statement.execute(INSERT_MUSIC_TYPE_SQL);
             statement.execute(INSERT_FIRST_ADDRESS_SQL);
-            statement.execute(INSERT_FIRST_USER_SQL);
+            statement.execute(INSERT_FIRST_USER_SQL);*/
+            Database database = DatabaseFactory.getInstance().findCorrectDatabaseImplementation((DatabaseConnection) dataSource.getConnection());
+
+            Liquibase liquibase = new liquibase.Liquibase("src/main/resources/liquibase/db.changelog-master.xml", new ClassLoaderResourceAccessor(), database);
+
+            liquibase.update(new Contexts(), new LabelExpression());
 
         } catch (SQLException e) {
             LOGGER.info("Don't initialize DataBase");
