@@ -13,7 +13,6 @@
         <junit.version>4.11</junit.version>
         <mockito.version>1.9.5</mockito.version>
         <powermock.version>1.5</powermock.version>
-        <liquibase.goal>update</liquibase.goal>
     </properties>
 
     <dependencies>
