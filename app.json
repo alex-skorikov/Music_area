@@ -1,15 +1,15 @@
-//{
-//  "name": "Music_area",
-//  "scripts": {
-//  },
-//  "env": {
-//  },
-//  "formation": {
-//  },
-//  "addons": [
-//    "heroku-postgresql"
-//  ],
-//  "buildpacks": [
-//
-//  ]
-//}
+{
+  "name": "Music_area",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+
+  ]
+}
