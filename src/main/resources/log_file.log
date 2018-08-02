@@ -1,5 +1,5 @@
-2018-08-02 21:20:28 INFO  DataBaseUtility:142 - Don't initialize DataBase
-2018-08-02 21:20:28 ERROR DataBaseUtility:143 - Cannot create JDBC driver of class '' for connect URL 'null'
+2018-08-02 23:26:29 INFO  DataBaseUtility:142 - Don't initialize DataBase
+2018-08-02 23:26:29 ERROR DataBaseUtility:143 - Cannot create JDBC driver of class '' for connect URL 'null'
 java.sql.SQLException: Cannot create JDBC driver of class '' for connect URL 'null'
 	at org.apache.commons.dbcp2.BasicDataSource.createConnectionFactory(BasicDataSource.java:2023)
 	at org.apache.commons.dbcp2.BasicDataSource.createDataSource(BasicDataSource.java:1897)
@@ -45,57 +45,57 @@ Caused by: java.lang.NullPointerException
 	at java.sql.DriverManager.getDriver(DriverManager.java:299)
 	at org.apache.commons.dbcp2.BasicDataSource.createConnectionFactory(BasicDataSource.java:2007)
 	... 37 more
-2018-08-02 21:20:48 ERROR AddressStore:104 - 
+2018-08-02 23:26:33 ERROR AddressStore:104 - 
 java.sql.SQLException
-2018-08-02 21:20:48 ERROR AddressStore:135 - 
+2018-08-02 23:26:33 ERROR AddressStore:135 - 
 java.sql.SQLException
-2018-08-02 21:20:48 ERROR AddressStore:121 - 
+2018-08-02 23:26:33 ERROR AddressStore:121 - 
 java.sql.SQLException
-2018-08-02 21:20:48 ERROR AddressStore:155 - 
+2018-08-02 23:26:33 ERROR AddressStore:155 - 
 java.sql.SQLException
-2018-08-02 21:20:48 ERROR AddressStore:215 - 
+2018-08-02 23:26:33 ERROR AddressStore:215 - 
 java.sql.SQLException
-2018-08-02 21:20:48 ERROR AddressStore:236 - 
+2018-08-02 23:26:33 ERROR AddressStore:236 - 
 java.sql.SQLException
-2018-08-02 21:20:48 ERROR AddressStore:258 - 
+2018-08-02 23:26:33 ERROR AddressStore:258 - 
 java.sql.SQLException
-2018-08-02 21:20:49 ERROR AddressStore:104 - 
+2018-08-02 23:26:33 ERROR AddressStore:104 - 
 java.sql.SQLException
-2018-08-02 21:20:49 ERROR AddressStore:135 - 
+2018-08-02 23:26:33 ERROR AddressStore:135 - 
 java.sql.SQLException
-2018-08-02 21:20:49 ERROR AddressStore:121 - 
+2018-08-02 23:26:33 ERROR AddressStore:121 - 
 java.sql.SQLException
-2018-08-02 21:20:49 ERROR AddressStore:155 - 
+2018-08-02 23:26:33 ERROR AddressStore:155 - 
 java.sql.SQLException
-2018-08-02 21:20:49 ERROR AddressStore:175 - 
+2018-08-02 23:26:33 ERROR AddressStore:175 - 
 java.sql.SQLException
-2018-08-02 21:20:49 ERROR AddressStore:194 - 
+2018-08-02 23:26:33 ERROR AddressStore:194 - 
 java.sql.SQLException
-2018-08-02 21:20:49 ERROR AddressStore:215 - 
+2018-08-02 23:26:33 ERROR AddressStore:215 - 
 java.sql.SQLException
-2018-08-02 21:20:49 ERROR AddressStore:236 - 
+2018-08-02 23:26:33 ERROR AddressStore:236 - 
 java.sql.SQLException
-2018-08-02 21:20:49 ERROR AddressStore:258 - 
+2018-08-02 23:26:33 ERROR AddressStore:258 - 
 java.sql.SQLException
-2018-08-02 21:21:00 ERROR UserMusicStore:87 - 
+2018-08-02 23:26:35 ERROR UserMusicStore:87 - 
 java.sql.SQLException
-2018-08-02 21:21:00 ERROR UserMusicStore:117 - 
+2018-08-02 23:26:35 ERROR UserMusicStore:117 - 
 java.sql.SQLException
-2018-08-02 21:21:00 ERROR UserMusicStore:103 - 
+2018-08-02 23:26:35 ERROR UserMusicStore:103 - 
 java.sql.SQLException
-2018-08-02 21:21:00 ERROR UserMusicStore:153 - 
+2018-08-02 23:26:35 ERROR UserMusicStore:153 - 
 java.sql.SQLException
-2018-08-02 21:21:00 ERROR UserMusicStore:87 - 
+2018-08-02 23:26:35 ERROR UserMusicStore:87 - 
 java.sql.SQLException
-2018-08-02 21:21:00 ERROR UserMusicStore:103 - 
+2018-08-02 23:26:35 ERROR UserMusicStore:103 - 
 java.sql.SQLException
-2018-08-02 21:21:00 ERROR UserMusicStore:117 - 
+2018-08-02 23:26:35 ERROR UserMusicStore:117 - 
 java.sql.SQLException
-2018-08-02 21:21:00 ERROR UserMusicStore:135 - 
+2018-08-02 23:26:35 ERROR UserMusicStore:135 - 
 java.sql.SQLException
-2018-08-02 21:21:00 ERROR UserMusicStore:153 - 
+2018-08-02 23:26:35 ERROR UserMusicStore:153 - 
 java.sql.SQLException
-2018-08-02 21:21:01 ERROR UserMusicStore:135 - 
+2018-08-02 23:26:35 ERROR UserMusicStore:135 - 
 java.sql.SQLException
-2018-08-02 21:21:01 ERROR UserMusicStore:153 - 
+2018-08-02 23:26:35 ERROR UserMusicStore:153 - 
 java.sql.SQLException
