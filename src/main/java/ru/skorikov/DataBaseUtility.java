@@ -1,5 +1,7 @@
 package ru.skorikov;
 
+import liquibase.Contexts;
+import liquibase.LabelExpression;
 import liquibase.Liquibase;
 import liquibase.database.Database;
 import liquibase.database.DatabaseConnection;
@@ -136,7 +138,7 @@ public class DataBaseUtility {
 
             Liquibase liquibase = new liquibase.Liquibase("src/main/resources/liquibase/db.changelog-master.xml", new ClassLoaderResourceAccessor(), database);
 
-            //liquibase.update(new Contexts(), new LabelExpression());
+            liquibase.update(new Contexts(), new LabelExpression());
 
         } catch (SQLException e) {
             LOGGER.info("Don't initialize DataBase");
