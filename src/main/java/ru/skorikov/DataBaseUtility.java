@@ -90,7 +90,7 @@ public class DataBaseUtility {
             BasicDataSource ds = new BasicDataSource();
 
             Properties properties = new Properties();
-            properties.getProperty("src/main/resources/develop/database.properties");
+            properties.getProperty("src/main/resources/release/database.properties");
 
             ds.setDriverClassName(properties.getProperty("jdbc.drivers"));
             ds.setUrl(properties.getProperty("jdbc.url"));
