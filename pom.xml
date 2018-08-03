@@ -112,11 +112,6 @@
             <artifactId>liquibase-core</artifactId>
             <version>3.6.2</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-dbcp2</artifactId>
-            <version>2.0</version>
-        </dependency>
     </dependencies>
 
     <profiles>
@@ -174,6 +169,7 @@
     </profiles>
 
     <build>
+        <defaultGoal>install</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
