@@ -127,6 +127,8 @@
                         <artifactId>liquibase-maven-plugin</artifactId>
                         <version>3.6.2</version>
                         <configuration>
+                            <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                            <propertyFileWillOverride>true</propertyFileWillOverride>
                             <propertyFile>src/main/resources/develop/liquibase.properties</propertyFile>
                             <changeLogFile>liquibase/db.changelog-master.xml</changeLogFile>
                         </configuration>
@@ -154,6 +156,8 @@
                         <artifactId>liquibase-maven-plugin</artifactId>
                         <version>3.6.2</version>
                         <configuration>
+                            <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                            <propertyFileWillOverride>true</propertyFileWillOverride>
                             <propertyFile>src/main/resources/release/liquibase.properties</propertyFile>
                             <changeLogFile>liquibase/db.changelog-master.xml</changeLogFile>
                         </configuration>
