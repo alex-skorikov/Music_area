@@ -176,7 +176,7 @@
     </profiles>
 
     <build>
-        <defaultGoal>site</defaultGoal>
+        <defaultGoal>package</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
