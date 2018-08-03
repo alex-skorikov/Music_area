@@ -117,9 +117,6 @@
     <profiles>
         <profile>
             <id>develop</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <build>
                 <plugins>
                     <plugin>
@@ -144,6 +141,9 @@
         </profile>
         <profile>
             <id>release</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <build>
                 <plugins>
                     <plugin>
@@ -169,7 +169,7 @@
     </profiles>
 
     <build>
-        <defaultGoal>compile</defaultGoal>
+        <defaultGoal>update</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
