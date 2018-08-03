@@ -131,7 +131,7 @@
                             <execution>
                                 <phase>process-resources</phase>
                                 <goals>
-                                    <goal>update</goal>
+                                    <goal>updateTestingRollback</goal>
                                 </goals>
                             </execution>
                         </executions>
@@ -169,7 +169,7 @@
     </profiles>
 
     <build>
-        <defaultGoal>update</defaultGoal>
+        <defaultGoal>compile</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
