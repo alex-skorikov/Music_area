@@ -1,54 +1,54 @@
-2018-08-03 12:45:25 ERROR AddressStore:104 - 
+2018-08-03 13:01:17 ERROR AddressStore:104 - 
 java.sql.SQLException
-2018-08-03 12:45:25 ERROR AddressStore:135 - 
+2018-08-03 13:01:17 ERROR AddressStore:135 - 
 java.sql.SQLException
-2018-08-03 12:45:25 ERROR AddressStore:121 - 
+2018-08-03 13:01:17 ERROR AddressStore:121 - 
 java.sql.SQLException
-2018-08-03 12:45:25 ERROR AddressStore:155 - 
+2018-08-03 13:01:17 ERROR AddressStore:155 - 
 java.sql.SQLException
-2018-08-03 12:45:25 ERROR AddressStore:215 - 
+2018-08-03 13:01:17 ERROR AddressStore:215 - 
 java.sql.SQLException
-2018-08-03 12:45:25 ERROR AddressStore:236 - 
+2018-08-03 13:01:17 ERROR AddressStore:236 - 
 java.sql.SQLException
-2018-08-03 12:45:25 ERROR AddressStore:258 - 
+2018-08-03 13:01:17 ERROR AddressStore:258 - 
 java.sql.SQLException
-2018-08-03 12:45:25 ERROR AddressStore:104 - 
+2018-08-03 13:01:17 ERROR AddressStore:104 - 
 java.sql.SQLException
-2018-08-03 12:45:25 ERROR AddressStore:135 - 
+2018-08-03 13:01:17 ERROR AddressStore:135 - 
 java.sql.SQLException
-2018-08-03 12:45:25 ERROR AddressStore:121 - 
+2018-08-03 13:01:17 ERROR AddressStore:121 - 
 java.sql.SQLException
-2018-08-03 12:45:25 ERROR AddressStore:155 - 
+2018-08-03 13:01:17 ERROR AddressStore:155 - 
 java.sql.SQLException
-2018-08-03 12:45:25 ERROR AddressStore:175 - 
+2018-08-03 13:01:17 ERROR AddressStore:175 - 
 java.sql.SQLException
-2018-08-03 12:45:25 ERROR AddressStore:194 - 
+2018-08-03 13:01:17 ERROR AddressStore:194 - 
 java.sql.SQLException
-2018-08-03 12:45:25 ERROR AddressStore:215 - 
+2018-08-03 13:01:17 ERROR AddressStore:215 - 
 java.sql.SQLException
-2018-08-03 12:45:25 ERROR AddressStore:236 - 
+2018-08-03 13:01:17 ERROR AddressStore:236 - 
 java.sql.SQLException
-2018-08-03 12:45:25 ERROR AddressStore:258 - 
+2018-08-03 13:01:17 ERROR AddressStore:258 - 
 java.sql.SQLException
-2018-08-03 12:45:26 ERROR UserMusicStore:87 - 
+2018-08-03 13:01:18 ERROR UserMusicStore:87 - 
 java.sql.SQLException
-2018-08-03 12:45:26 ERROR UserMusicStore:117 - 
+2018-08-03 13:01:18 ERROR UserMusicStore:117 - 
 java.sql.SQLException
-2018-08-03 12:45:26 ERROR UserMusicStore:103 - 
+2018-08-03 13:01:18 ERROR UserMusicStore:103 - 
 java.sql.SQLException
-2018-08-03 12:45:26 ERROR UserMusicStore:153 - 
+2018-08-03 13:01:18 ERROR UserMusicStore:153 - 
 java.sql.SQLException
-2018-08-03 12:45:26 ERROR UserMusicStore:87 - 
+2018-08-03 13:01:18 ERROR UserMusicStore:87 - 
 java.sql.SQLException
-2018-08-03 12:45:26 ERROR UserMusicStore:103 - 
+2018-08-03 13:01:18 ERROR UserMusicStore:103 - 
 java.sql.SQLException
-2018-08-03 12:45:26 ERROR UserMusicStore:117 - 
+2018-08-03 13:01:18 ERROR UserMusicStore:117 - 
 java.sql.SQLException
-2018-08-03 12:45:26 ERROR UserMusicStore:135 - 
+2018-08-03 13:01:18 ERROR UserMusicStore:135 - 
 java.sql.SQLException
-2018-08-03 12:45:26 ERROR UserMusicStore:153 - 
+2018-08-03 13:01:18 ERROR UserMusicStore:153 - 
 java.sql.SQLException
-2018-08-03 12:45:27 ERROR UserMusicStore:135 - 
+2018-08-03 13:01:19 ERROR UserMusicStore:135 - 
 java.sql.SQLException
-2018-08-03 12:45:27 ERROR UserMusicStore:153 - 
+2018-08-03 13:01:19 ERROR UserMusicStore:153 - 
 java.sql.SQLException
