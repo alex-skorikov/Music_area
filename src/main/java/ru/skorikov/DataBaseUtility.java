@@ -3,13 +3,12 @@ package ru.skorikov;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.log4j.Logger;
 
-import java.util.Properties;
-
 /**
  * Class DataBase Util.
  */
 
 public class DataBaseUtility {
+
     /**
      * Logger.
      */
@@ -28,20 +27,15 @@ public class DataBaseUtility {
         if (basicDataSource == null) {
             BasicDataSource ds = new BasicDataSource();
 
-            Properties properties = new Properties();
-            properties.getProperty("src/main/resources/release/database.properties");
-
-            ds.setDriverClassName(properties.getProperty("jdbc.drivers"));
-            ds.setUrl(properties.getProperty("jdbc.url"));
-            ds.setUsername(properties.getProperty("jdbc.username"));
-            ds.setPassword(properties.getProperty("jdbc.password"));
+            ds.setDriverClassName("org.postgresql.Driver");
+            ds.setUrl("jdbc:postgresql://ec2-54-217-205-90.eu-west-1.compute.amazonaws.com:5432/ddi2ocre4imcf5?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory");
+            ds.setUsername("guaumlbhoxgeac");
+            ds.setPassword("b442a1e669831fb2e499fc936bb97973149e54edbde3780ece73e1ad193e5a8a");
 
             ds.setMinIdle(4);
             ds.setMaxIdle(16);
             ds.setMaxOpenPreparedStatements(64);
-
             ds.setValidationQuery("select 1");
-
             basicDataSource = ds;
         }
         return basicDataSource;
