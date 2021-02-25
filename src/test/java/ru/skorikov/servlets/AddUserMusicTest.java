@@ -22,7 +22,6 @@ import java.util.ArrayList;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.never;
@@ -36,17 +35,17 @@ public class AddUserMusicTest {
      * User-Music store instance.
      */
     @Mock
-    private UserMusicStore userMusicStore = mock(UserMusicStore.class);
+    private UserMusicStore userMusicStore;
     /**
      * Music Store instance for test.
      */
     @Mock
-    private MusicTypeStore musicTypeStore = mock(MusicTypeStore.class);
+    private MusicTypeStore musicTypeStore;
     /**
      * Servise for controller.
      */
     @Mock
-    private UserService service = mock(UserService.class);
+    private UserService service;
     /**
      * Test controller.
      */
@@ -55,15 +54,18 @@ public class AddUserMusicTest {
     /**
      * Request for test.
      */
-    private HttpServletRequest req = mock(HttpServletRequest.class);
+    @Mock
+    private HttpServletRequest req;
     /**
      * Response for test.
      */
-    private HttpServletResponse resp = mock(HttpServletResponse.class);
+    @Mock
+    private HttpServletResponse resp;
     /**
      * Dispatcher for test.
      */
-    private RequestDispatcher dispatcher = mock(RequestDispatcher.class);
+    @Mock
+    private RequestDispatcher dispatcher;
 
     /**
      * Test method doGet.
@@ -92,9 +94,11 @@ public class AddUserMusicTest {
         musicType.setId(1);
         musicType.setType("type");
         musicType.setDescription("desc");
+        User user = new User();
+        user.setName("Name");
         when(req.getRequestDispatcher(any(String.class))).thenReturn(dispatcher);
         when(req.getParameter("id")).thenReturn(String.valueOf(1));
-        when(service.findById(1)).thenReturn(new User());
+        when(service.findById(1)).thenReturn(user);
         when(musicTypeStore.findByType(any(String.class))).thenReturn(musicType);
         when(userMusicStore.add(any(UserMusic.class))).thenReturn(true);
 

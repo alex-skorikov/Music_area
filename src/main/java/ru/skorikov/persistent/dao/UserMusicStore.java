@@ -23,7 +23,7 @@ public class UserMusicStore implements EntityDAO<UserMusic> {
     /**
      * SQL update user-music type.
      */
-    private static final String UPDATE_USER_MUSICTYPE_SQL = "UPDATE user_musictype SET user_id =?, music_type_id =? WHERE (id = ?);";
+    private static final String UPDATE_USER_MUSICTYPE_SQL = "UPDATE user_musictype SET user_id =?, music_type_id =? WHERE (user_id = ?);";
     /**
      * SQL delete user-music type.
      */
@@ -31,7 +31,7 @@ public class UserMusicStore implements EntityDAO<UserMusic> {
     /**
      * SQL get user-music type by ID.
      */
-    private static final String GET_USER_MUSICTYPE_BY_ID = "SELECT id, users_id, musictype_id FROM user_musictype WHERE (id = ?);";
+    private static final String GET_USER_MUSICTYPE_BY_ID = "SELECT user_id, music_type_id FROM user_musictype WHERE (user_id = ?);";
     /**
      * SQL get all roles.
      */
