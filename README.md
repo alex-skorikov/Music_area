@@ -3,10 +3,7 @@
 # Music_area
 Музыкальная прощадка
 Создать 4 сущности:
-User;
-Address;
-Role;
-MusicType.
+User, Address, Role, MusicType.
 Таблицы и связи между таблицами:
 Role : User(1:M);
 User : Address(1:1);
